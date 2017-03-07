@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  	<script type="text/javascript">
+  		function submit() {
+  			var Road = $('#Road').val();
+  			var Direction = $('#Direction').val();
+			var DayOfWeek = $('#DayOfWeek').val();
+			var TimeOfDay = $('#TimeOfDay').val();
+			var Result = $('#Result').val();
+  			$.ajax({
+			  type: "POST",
+			  data: {"Road" : Road, "Direction" : Direction, "DayOfWeek" : DayOfWeek, "Result" : Result},
+			  url: "https://localhost:5000/input?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay + "&o1=" + Result,
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  success: function( data ) {
+				  alert(data);
+			  }
+			});
+  		}
+  	</script>
+
+	<script type="text/javascript">
+  		function Psubmit() {
+  			var Road = $('#myRoad').val();
+  			var Direction = $('#myDirection').val();
+			var DayOfWeek = $('#myDayOfWeek').val();
+			var TimeOfDay = $('#myTimeOfDay').val();
+  			$.ajax({
+			  type: "POST",
+			  url: "https://localhost:5000/predict?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay,
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  success: function( data ) {
+				  alert(data);
+			  }
+			});
+  		}
+  	</script>
+</head>
+<body>
+	<div class="TrainingData">
+	<h3>Training Section</h3>
+
+		Road id: <input id="Road" class="form-control" type="text" name="Road"><br>
+		Direction: <input id="Direction" class="form-control" type="text" name="Direction"><br>
+		DayOfWeek: <input id="DayOfWeek" class="form-control" type="text" name="DayOfWeek"><br>
+		TimeOfDay: <input id="TimeOfDay" class="form-control" type="text" name="TimeOfDay"><br>
+		Result: <input id="Result" class="form-control" type="text" name="Result"><br>
+	  	<button class="btn btn-default" onclick="submit()">Submit</button>
+  	</div>
+
+	<div class="PredictingData">
+	<h3>Predict Section</h3>
+
+		Road id: <input id="myRoad" class="form-control" type="text" name="myRoad"><br>
+		Direction: <input id="myDirection" class="form-control" type="text" name="myDirection"><br>
+		DayOfWeek: <input id="myDayOfWeek" class="form-control" type="text" name="myDayOfWeek"><br>
+		TimeOfDay: <input id="myTimeOfDay" class="form-control" type="text" name="myTimeOfDay"><br>
+	  	<button class="btn btn-default" onclick="Psubmit()">Submit</button>
+  	</div>
+
+	<div class="Result">
+		<h3> Result</h3>
+	</div>
+
+</body>
+</html>
