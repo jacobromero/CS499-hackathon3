@@ -20,7 +20,7 @@
   			$.ajax({
 			  type: "POST",
 			  data: {"Road" : Road, "Direction" : Direction, "DayOfWeek" : DayOfWeek, "Result" : Result},
-			  url: "https://localhost:5000/input?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay + "&o1=" + Result,
+			  url: "http://localhost:5000/input?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay + "&o1=" + Result,
 			  contentType: "application/json; charset=utf-8",
 			  dataType: "json",
 			  success: function( data ) {
@@ -38,12 +38,12 @@
 			var TimeOfDay = $('#myTimeOfDay').val();
   			$.ajax({
 			  type: "POST",
-			  url: "https://localhost:5000/predict?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay,
+			  url: "http://localhost:5000/predict?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay,
 			  contentType: "application/json; charset=utf-8",
 			  dataType: "json",
 			  success: function( data ) {
 				  alert(data);
-			  }
+			  },
 			});
   		}
   	</script>
