@@ -23,8 +23,8 @@
 			  url: "http://localhost:5000/input?p1=" + Road + "&p2=" + Direction + "&p3=" + DayOfWeek + "&p4=" + TimeOfDay + "&o1=" + Result,
 			  contentType: "application/json; charset=utf-8",
 			  dataType: "json",
-			  success: function( data ) {
-				  alert(data);
+			  complete: function (data) {
+			  	$('#train').html('added to model');
 			  }
 			});
   		}
@@ -42,7 +42,7 @@
 			  contentType: "application/json; charset=utf-8",
 			  dataType: "json",
 			  success: function( data ) {
-				  alert(data);
+				  $('#res').html(data);
 			  },
 			});
   		}
@@ -59,8 +59,9 @@
 		Result: <input id="Result" class="form-control" type="text" name="Result"><br>
 	  	<button class="btn btn-default" onclick="submit()">Submit</button>
   	</div>
-
+  	<h3 id="train"></h3>
 	<div class="PredictingData">
+	<br>
 	<h3>Predict Section</h3>
 
 		Road id: <input id="myRoad" class="form-control" type="text" name="myRoad"><br>
@@ -71,7 +72,8 @@
   	</div>
 
 	<div class="Result">
-		<h3> Result</h3>
+		<h3>Result:</h3>
+		<p id="res"></p>
 	</div>
 
 </body>

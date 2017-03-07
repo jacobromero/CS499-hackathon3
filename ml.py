@@ -1,7 +1,6 @@
 from sklearn import linear_model
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-
 from flask import Flask
 from flask import request
 import flask
@@ -19,9 +18,9 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def InputPage():
     return flask.send_file("index.html")
 
-@app.route("/input")
+@app.route("/input", methods=["POST"])
 @cross_origin()
-def hello():
+def train():
     p1 = request.args.get('p1')
     data.append([request.args.get('p1'), request.args.get('p2'), request.args.get('p3'), request.args.get('p4')])
     output.append([request.args.get('o1')])
